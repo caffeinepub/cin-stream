@@ -1,0 +1,185 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 5,
+  "summary": "French streaming website for movies and series with chunked video upload (up to 5GB), public upload access with admin-only deletion, search functionality, rating system, and illustrative images for each title",
+  "architectural_notes": [
+    "Application interface in French language",
+    "Content management system with admin authentication for uploads",
+    "Database schema to store movies/series with metadata (title, description, rating, image)",
+    "Chunked upload system: videos divided into 2MB fragments, transmitted to backend, and reassembled in canister storage",
+    "Maximum video file size: 5GB per upload",
+    "Public upload access: all users can add content; deletion restricted to administrators"
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-implement-admin-only-upload-functionality-where-only-authenticated-administrators-can-add-new-movies-and-series-with-their-details-and-cover-images",
+      "title": "Implement admin-only upload functionality where only authenticated administrators can add new movies and series with their details and cover images",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-search-functionality-that-allows-users-to-search-for-movies-and-series-by-title",
+      "title": "Create a search functionality that allows users to search for movies and series by title",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-rating-system-where-users-can-rate-movies-and-series-and-display-the-average-rating-for-each-title",
+      "title": "Implement a rating system where users can rate movies and series, and display the average rating for each title",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-display-a-grid-or-list-view-of-all-movies-and-series-with-their-cover-images-titles-and-ratings-on-the-main-page",
+      "title": "Display a grid or list view of all movies and series with their cover images, titles, and ratings on the main page",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-detailed-view-pages-for-individual-movies-and-series-showing-full-information-cover-image-video-player-and-rating-interface",
+      "title": "Create detailed view pages for individual movies and series showing full information, cover image, video player, and rating interface",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-all-user-facing-text-and-interface-elements-in-french-language",
+      "title": "Implement all user-facing text and interface elements in French language",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-apply-a-cinematic-elegant-visual-theme-with-dark-tones-reminiscent-of-premium-streaming-platforms-using-rich-burgundy-or-deep-navy-accents-instead-of-blue-and-purple-with-bold-typography-for-titles-and-smooth-animations-for-hover-states",
+      "title": "Apply a cinematic, elegant visual theme with dark tones reminiscent of premium streaming platforms, using rich burgundy or deep navy accents instead of blue and purple, with bold typography for titles and smooth animations for hover states",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-frontend-upload-interface-to-support-chunked-file-upload-with-progress-tracking-showing-percentage-completed-and-estimated-time-remaining-during-large-video-uploads",
+      "title": "Update frontend upload interface to support chunked file upload with progress tracking, showing percentage completed and estimated time remaining during large video uploads",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-url-input-field-from-the-admin-upload-form-and-replace-with-direct-video-file-upload-only",
+      "title": "Remove URL input field from the admin upload form and replace with direct video file upload only",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-change-upload-permissions-to-allow-all-authenticated-users-to-upload-movies-and-series-content-removing-the-admin-only-restriction-for-content-creation",
+      "title": "Change upload permissions to allow all authenticated users to upload movies and series content, removing the admin-only restriction for content creation",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-admin-only-deletion-functionality-where-only-administrators-can-delete-uploaded-movies-and-series-while-regular-users-cannot",
+      "title": "Implement admin-only deletion functionality where only administrators can delete uploaded movies and series, while regular users cannot",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Display movies and series content with illustrative images",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Admin-only content upload functionality for movies and series",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Search functionality for movies and series",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Rating system for movies and series",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Create a backend data model for movies and series with fields for title, description, rating (numeric), video URL, and cover image URL",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Implement chunked video upload system supporting files up to 5GB, dividing large files into 2MB fragments for Internet Computer storage",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Change upload permissions: allow all users to upload content, restrict deletion to administrators only",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Remove URL-based video system and replace with direct file upload only",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-9",
+      "summary": "Implement backend chunked upload system that accepts video file fragments of up to 2MB each, stores them temporarily, and reassembles them into a complete video file with a maximum total size of 5GB per video",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-10",
+      "summary": "Remove URL-based video field from the title data model and replace with direct blob storage reference for uploaded video files",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-15",
+      "summary": "Update video player component to stream video content from backend blob storage instead of external URLs",
+      "reqIds": [
+        "REQ-15"
+      ],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "CinéStream",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

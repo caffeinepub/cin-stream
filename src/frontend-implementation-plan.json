@@ -1,0 +1,110 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Frontend: Chunked Video Upload with Permission Updates",
+  "requirements": [
+    {
+      "id": "REQ-11",
+      "summary": "Implement chunked video upload with progress tracking in the upload interface",
+      "acceptanceCriteria": [
+        "File input accepts video files up to 5GB",
+        "Files are automatically split into 2MB chunks on the client side",
+        "Progress bar displays upload percentage",
+        "Upload can handle files up to 5GB without crashing",
+        "Error handling for failed chunks with retry capability"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/AdminUploadPage.tsx",
+          "operation": "modify",
+          "description": "Replace the current video file upload implementation with chunked upload logic that splits video files into 2MB chunks. Use the ExternalBlob.withUploadProgress() method from the blob-storage component to track upload progress. Display a progress bar showing percentage completed and handle chunk upload failures with retry capability. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/UploadProgress.tsx",
+          "operation": "create",
+          "description": "Create a reusable progress display component that shows upload percentage, estimated time remaining, and current/total file size. Include visual progress bar with smooth animations and status text in French (e.g., 'Téléversement en cours...', 'Téléversement terminé')."
+        }
+      ]
+    },
+    {
+      "id": "REQ-12",
+      "summary": "Remove URL input field from admin upload form",
+      "acceptanceCriteria": [
+        "URL input field removed from upload form",
+        "Only file upload interface remains for video content",
+        "Form validation enforces video file upload requirement"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/AdminUploadPage.tsx",
+          "operation": "modify",
+          "description": "Remove any URL input field for video content from the upload form. Ensure only the file upload interface remains for video selection. Update form validation to require a video file upload and reject submissions without an uploaded video file."
+        }
+      ]
+    },
+    {
+      "id": "REQ-13",
+      "summary": "Allow all authenticated users to upload content by removing admin-only restriction",
+      "acceptanceCriteria": [
+        "Any authenticated user can access the upload page",
+        "AdminGuard component removed from upload route or modified to allow all authenticated users",
+        "Upload functionality is accessible to non-admin users"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Remove AdminGuard wrapper from the upload route or replace it with an authentication-only guard that allows any authenticated user (not just admins) to access the upload page. Ensure the route is accessible to all users with valid identities."
+        },
+        {
+          "path": "frontend/src/components/Header.tsx",
+          "operation": "modify",
+          "description": "Update the conditional logic for displaying the upload navigation button. Change from admin-only visibility to showing the button for any authenticated user. Update button text or tooltip if needed to reflect that all users can upload."
+        },
+        {
+          "path": "frontend/src/components/AuthGuard.tsx",
+          "operation": "create",
+          "description": "Create a new authentication guard component that checks if the user is authenticated (has a valid identity) but does not require admin role. Display a login prompt in French for unauthenticated users. This replaces AdminGuard for the upload route."
+        }
+      ]
+    },
+    {
+      "id": "REQ-14",
+      "summary": "Implement admin-only delete functionality in the frontend",
+      "acceptanceCriteria": [
+        "Delete button visible only to admin users in the frontend",
+        "Non-admin users cannot delete content through any interface",
+        "Attempting to delete as non-admin returns authorization error"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/TitleDetailPage.tsx",
+          "operation": "modify",
+          "description": "Add a delete button to the title detail page that is conditionally rendered only for admin users. Use the isCallerAdmin backend method or user role check from the authorization component to determine visibility. Wire the delete button to call the deleteTitle mutation from useQueries. Show confirmation dialog before deletion. Display success/error messages in French. After successful deletion, navigate back to the home page."
+        },
+        {
+          "path": "frontend/src/hooks/useQueries.ts",
+          "operation": "modify",
+          "description": "Add a useDeleteTitle mutation hook that calls actor.deleteTitle(id). Include cache invalidation for the titles list after successful deletion. Handle authorization errors gracefully with French error messages (e.g., 'Seuls les administrateurs peuvent supprimer du contenu')."
+        }
+      ]
+    },
+    {
+      "id": "REQ-15",
+      "summary": "Update video player to stream from backend blob storage",
+      "acceptanceCriteria": [
+        "VideoPlayer component fetches video from backend blob storage",
+        "Video streaming works for files up to 5GB",
+        "Playback controls function correctly with blob-based videos",
+        "Loading states handle large video file initialization"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/VideoPlayer.tsx",
+          "operation": "modify",
+          "description": "Update the VideoPlayer component to use the ExternalBlob.getDirectURL() method from the blob-storage component to obtain the video streaming URL. Verify the component's usage instructions before implementing. Ensure the video element uses this direct URL for streaming support. Add appropriate loading states for large video files (up to 5GB) and handle initialization delays. Test that native browser controls function correctly with blob-based video sources."
+        }
+      ]
+    }
+  ]
+}

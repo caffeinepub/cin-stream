@@ -1,0 +1,22 @@
+{
+  "frontend/src/App.tsx": "Main application component with TanStack Router setup, defining routes for home, title detail, and upload pages (no longer admin-restricted), wrapped in ThemeProvider with Toaster.",
+  "frontend/src/components/Layout.tsx": "Layout wrapper component providing the cinematic dark gradient background with burgundy accents and containing Header, main content area, and Footer.",
+  "frontend/src/components/Header.tsx": "Navigation header with CinéStream branding, upload button visible to all authenticated users (not just admins), and authentication button with login/logout functionality.",
+  "frontend/src/components/Footer.tsx": "Footer component displaying copyright information and attribution link to caffeine.ai with UTM tracking parameters.",
+  "frontend/src/pages/HomePage.tsx": "Main landing page displaying search bar, titles grid, profile setup modal, and handling empty/loading states with French messaging.",
+  "frontend/src/pages/TitleDetailPage.tsx": "Detail page for individual titles showing cover image, video player, description, type badge, rating components, and admin-only delete button with confirmation dialog.",
+  "frontend/src/pages/AdminUploadPage.tsx": "Upload page for authenticated users (not admin-only) with chunked video upload supporting files up to 5GB, includes file size validation, progress tracking, and French messaging.",
+  "frontend/src/components/AdminGuard.tsx": "Authorization guard component that checks admin role and displays appropriate access denied or login required messages in French.",
+  "frontend/src/components/SearchBar.tsx": "Search input component with debounced search functionality, loading indicator, and French placeholder text.",
+  "frontend/src/components/TitlesGrid.tsx": "Responsive grid layout component that displays an array of TitleCard components.",
+  "frontend/src/components/TitleCard.tsx": "Card component for displaying individual movie/series with cover image, title, rating, type badge, and hover effects with navigation to detail page.",
+  "frontend/src/components/RatingDisplay.tsx": "Component displaying average rating as stars (1-5 scale) with rating count in French format.",
+  "frontend/src/components/RatingInput.tsx": "Interactive rating input with 5 clickable stars allowing authenticated users to submit ratings with success/error feedback.",
+  "frontend/src/components/VideoPlayer.tsx": "HTML5 video player component using ExternalBlob direct URL for streaming large video files with loading and error states in French.",
+  "frontend/src/components/ProfileSetupModal.tsx": "Modal dialog for first-time user profile setup, prompting authenticated users without profiles to enter their name.",
+  "frontend/src/hooks/useQueries.ts": "Custom React Query hooks for all backend operations including fetching titles, searching, ratings, user profiles, delete functionality, and mutations with proper cache invalidation.",
+  "frontend/src/index.css": "Global styles with OKLCH color system defining cinematic dark theme with burgundy (#8B0000) primary colors and deep blacks for background.",
+  "frontend/tailwind.config.js": "Tailwind configuration with cinematic color palette using burgundy accents, custom border radius, and animation settings.",
+  "frontend/src/components/AuthGuard.tsx": "Authentication guard component that checks if user is authenticated (not admin-specific), displays login prompt in French for unauthenticated users.",
+  "frontend/src/components/UploadProgress.tsx": "Reusable progress display component showing upload percentage, file name, size information with visual progress bar and French status messages."
+}

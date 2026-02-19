@@ -1,0 +1,88 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-update-frontend-upload-interface-to-support-chunked-file-upload-with-progress-tracking-showing-percentage-completed-and-estimated-time-remaining-during-large-video-uploads",
+      "featureTitle": "Update frontend upload interface to support chunked file upload with progress tracking, showing percentage completed and estimated time remaining during large video uploads",
+      "files": [
+        "frontend/src/components/UploadProgress.tsx",
+        "frontend/src/pages/AdminUploadPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-11"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-remove-url-input-field-from-the-admin-upload-form-and-replace-with-direct-video-file-upload-only",
+      "featureTitle": "Remove URL input field from the admin upload form and replace with direct video file upload only",
+      "files": [
+        "frontend/src/pages/AdminUploadPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-12"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-change-upload-permissions-to-allow-all-authenticated-users-to-upload-movies-and-series-content-removing-the-admin-only-restriction-for-content-creation",
+      "featureTitle": "Change upload permissions to allow all authenticated users to upload movies and series content, removing the admin-only restriction for content creation",
+      "files": [
+        "frontend/src/components/AuthGuard.tsx",
+        "frontend/src/components/Header.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-13"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-admin-only-deletion-functionality-where-only-administrators-can-delete-uploaded-movies-and-series-while-regular-users-cannot",
+      "featureTitle": "Implement admin-only deletion functionality where only administrators can delete uploaded movies and series, while regular users cannot",
+      "files": [
+        "frontend/src/hooks/useQueries.ts",
+        "frontend/src/pages/TitleDetailPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-14"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

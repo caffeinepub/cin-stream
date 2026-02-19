@@ -1,0 +1,160 @@
+{
+  "kind": "build_request",
+  "title": "Implement chunked video upload (5GB max) with public upload and admin-only deletion",
+  "projectName": "CinéStream",
+  "priority": "high",
+  "requirements": [
+    {
+      "id": "REQ-9",
+      "text": "Implement backend chunked upload system that accepts video file fragments of up to 2MB each, stores them temporarily, and reassembles them into a complete video file with a maximum total size of 5GB per video",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-last"
+        ],
+        "quotes": [
+          "Grand Max 5 giga",
+          "garde uniquement l'upload direct"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Backend accepts video fragments up to 2MB each via HTTP",
+        "Backend stores fragments and reassembles them into complete video files",
+        "Total video size limit enforced at 5GB maximum",
+        "Assembled video files are stored as blobs in the backend",
+        "Upload session management tracks fragments for each upload"
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "text": "Remove URL-based video field from the title data model and replace with direct blob storage reference for uploaded video files",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-last"
+        ],
+        "quotes": [
+          "Enlève le système d'url, garde uniquement l'upload direct"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Video URL field removed from title data structure",
+        "Video content stored as blob reference in backend",
+        "Existing URL-based titles are migrated or marked for re-upload"
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "text": "Update frontend upload interface to support chunked file upload with progress tracking, showing percentage completed and estimated time remaining during large video uploads",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-last"
+        ],
+        "quotes": [
+          "Upload fragmenté"
+        ]
+      },
+      "acceptanceCriteria": [
+        "File input accepts video files up to 5GB",
+        "Files are automatically split into 2MB chunks on the client side",
+        "Progress bar displays upload percentage",
+        "Upload can handle files up to 5GB without crashing",
+        "Error handling for failed chunks with retry capability"
+      ]
+    },
+    {
+      "id": "REQ-12",
+      "text": "Remove URL input field from the admin upload form and replace with direct video file upload only",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-last"
+        ],
+        "quotes": [
+          "Enlève le système d'url, garde uniquement l'upload direct"
+        ]
+      },
+      "acceptanceCriteria": [
+        "URL input field removed from upload form",
+        "Only file upload interface remains for video content",
+        "Form validation enforces video file upload requirement"
+      ]
+    },
+    {
+      "id": "REQ-13",
+      "text": "Change upload permissions to allow all authenticated users to upload movies and series content, removing the admin-only restriction for content creation",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-last"
+        ],
+        "quotes": [
+          "tout le monde peut upload"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Any authenticated user can access the upload page",
+        "Backend accepts upload requests from any authenticated user",
+        "AdminGuard component removed from upload route or modified to allow all authenticated users",
+        "Upload functionality is accessible to non-admin users"
+      ]
+    },
+    {
+      "id": "REQ-14",
+      "text": "Implement admin-only deletion functionality where only administrators can delete uploaded movies and series, while regular users cannot",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-last"
+        ],
+        "quotes": [
+          "l'admin peut delete"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Backend delete endpoint restricted to admin role only",
+        "Delete button visible only to admin users in the frontend",
+        "Non-admin users cannot delete content through any interface",
+        "Attempting to delete as non-admin returns authorization error"
+      ]
+    },
+    {
+      "id": "REQ-15",
+      "text": "Update video player component to stream video content from backend blob storage instead of external URLs",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-last"
+        ],
+        "quotes": [
+          "Enlève le système d'url, garde uniquement l'upload direct"
+        ]
+      },
+      "acceptanceCriteria": [
+        "VideoPlayer component fetches video from backend blob storage",
+        "Video streaming works for files up to 5GB",
+        "Playback controls function correctly with blob-based videos",
+        "Loading states handle large video file initialization"
+      ]
+    }
+  ],
+  "constraints": [
+    "Maximum video file size is 5GB",
+    "Each upload chunk must not exceed 2MB due to Internet Computer HTTP limits",
+    "Backend must use single-actor architecture with all logic in main.mo",
+    "Do not modify immutable frontend paths: useInternetIdentity hooks, useActor.ts, main.tsx, components/ui",
+    "All user-facing text must remain in French language"
+  ],
+  "nonGoals": [
+    "External video hosting services (YouTube, Vimeo, S3)",
+    "Video transcoding or format conversion",
+    "Video compression or quality optimization",
+    "Streaming protocols beyond basic HTTP blob serving",
+    "Video analytics or view tracking"
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

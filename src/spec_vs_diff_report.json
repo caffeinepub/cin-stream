@@ -1,0 +1,45 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-19T16:18:10.762Z",
+  "summary": "The diff implements chunked video upload with blob storage and public upload access with admin-only deletion. Most requirements are covered, but migration of existing URL-based titles (REQ-10 AC) and retry capability for failed chunks (REQ-11 AC) are not evident in the diff. Additionally, estimated time remaining (REQ-11 AC) is not displayed in the progress component.",
+  "missing_requirements": [
+    {
+      "id": "REQ-10",
+      "requirement": "Existing URL-based titles are migrated or marked for re-upload",
+      "reason": "The diff shows removal of URL field from the data model and replacement with blob storage, but provides no evidence of migration logic for existing URL-based titles. The backend changes show the new blob-based Title type, but no migration code or re-upload marking mechanism is visible.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "requirement": "Upload progress shows estimated time remaining",
+      "reason": "The UploadProgress component displays upload percentage and file size information, but does not show estimated time remaining for the upload as specified in the acceptance criteria.",
+      "evidence": [
+        "frontend/src/components/UploadProgress.tsx"
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "requirement": "Error handling for failed chunks with retry capability",
+      "reason": "The AdminUploadPage handles video file upload and displays progress, but there is no visible implementation of retry logic for failed chunks. The ExternalBlob upload mechanism is used, but chunk-level error handling and retry capability are not evident in the diff.",
+      "evidence": [
+        "frontend/src/pages/AdminUploadPage.tsx"
+      ]
+    }
+  ],
+  "hallucinated_features": [],
+  "confidence": 0.85,
+  "changed_files": [
+    "backend/main.mo",
+    "frontend-file-summaries.txt",
+    "frontend/src/components/AuthGuard.tsx",
+    "frontend/src/components/Header.tsx",
+    "frontend/src/components/UploadProgress.tsx",
+    "frontend/src/hooks/useQueries.ts",
+    "frontend/src/pages/AdminUploadPage.tsx",
+    "frontend/src/pages/TitleDetailPage.tsx",
+    "project_state.json"
+  ]
+}
